@@ -9,9 +9,27 @@ function getComputerChoice (){
 }
 
 function playRound(humanChoice, computerChoice){
-    console.log(computerChoice);
-}
+    if (humanChoice == "Paper" && computerChoice == "Rock" || humanChoice == "Scissors" && computerChoice == "Paper" || humanChoice == "Rock" && computerChoice == "Scissors"){
+        humanScore++;
+        result.textContent = "You win! " + humanScore + ":" + computerScore;
+    }
+    else if (humanChoice == computerChoice){
+        result.textContent = "DRAW! " + humanScore + ":" + computerScore;
+    }
+    else{
+        computerScore++;
+        result.textContent = "You lose! " + humanScore + ":" + computerScore;
+    }
 
+    if (humanScore == 5){
+        result.textContent = "You win the game! " + humanScore + ":" + computerScore;
+        computerScore = humanScore = 0;
+    }
+    if (computerScore == 5){
+        result.textContent = "You lose the game! " + humanScore + ":" + computerScore;;
+        computerScore = humanScore = 0;
+    }
+}
 
 // code
 let humanScore = 0, computerScore = 0, choice1;
