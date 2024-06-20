@@ -2,37 +2,23 @@
 function getComputerChoice (){
     let nr = Math.random();
     let choice;
-    if (nr < 1/3) choice = "rock";
-    else if (nr > 1/3 && nr < 2/3) choice = "paper";
-    else if (nr > 2/3) choice = "scissors";
+    if (nr < 1/3) choice = "Rock";
+    else if (nr > 1/3 && nr < 2/3) choice = "Paper";
+    else if (nr > 2/3) choice = "Scissors";
     return choice;
 }
 
-function getHumanChoice (input){
-    console.log(input.textContent);
-}
-
 function playRound(humanChoice, computerChoice){
-    if (humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper" || humanChoice == "rock" && computerChoice == "scissors"){
-        humanScore++;
-        alert("You win! " + humanChoice + " beats " + computerChoice);
-    }
-    else if (humanChoice == computerChoice){
-        alert("Draw!");
-    }
-    else{
-        computerScore++;
-        alert("You lose! " + computerChoice + " beats " + humanChoice);
-    }
-    console.log(humanScore);
+    console.log(computerChoice);
 }
 
 
 // code
-let humanScore = 0, computerScore = 0;
+let humanScore = 0, computerScore = 0, choice1;
 
 const buttons = document.querySelectorAll("button");
+const result = document.querySelector(".results");
 
 for (let i = 0; i < buttons.length; i++){
-    buttons[i].addEventListener("click", () => {getHumanChoice(buttons[i])});
+    buttons[i].addEventListener("click", () => {playRound(buttons[i].textContent, getComputerChoice())});
 }
