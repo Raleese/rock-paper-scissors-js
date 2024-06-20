@@ -8,9 +8,8 @@ function getComputerChoice (){
     return choice;
 }
 
-function getHumanChoice (){
-    let choice = prompt("Choose one: rock, paper or scissors");
-    return choice;
+function getHumanChoice (input){
+    console.log(input.textContent);
 }
 
 function playRound(humanChoice, computerChoice){
@@ -28,16 +27,12 @@ function playRound(humanChoice, computerChoice){
     console.log(humanScore);
 }
 
-function playGame(){
-    for (let i = 0; i < 5; i++){
-        const hselect = getHumanChoice().toLowerCase();
-        const cselect = getComputerChoice().toLowerCase();
-        playRound(hselect, cselect);
-    }
-}
 
+// code
 let humanScore = 0, computerScore = 0;
-playGame();
-if (humanScore > computerScore) alert("END: You win!");
-else if (computerScore > humanScore) alert("END: You lose!");
-else alert("END: Draw!");
+
+const buttons = document.querySelectorAll("button");
+
+for (let i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener("click", () => {getHumanChoice(buttons[i])});
+}
